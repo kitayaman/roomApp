@@ -1,0 +1,33 @@
+<div class="container room-show">
+  <div class="row">
+    <div class="col-md-8">
+      <% if @room.room_image? %>
+        <%= image_tag @room.room_image.url ,class:"room-show-image"%>
+      <% else %>
+        <%= image_tag 'default_icon.jpg' ,class:"room-show-image"%>            
+      <% end %>
+      <div class="room-show-detail">
+        <div class="room-show-detail-icon">
+          <% if @room.user.user_image? %>
+            <%= image_tag @room.user.user_image.url ,class:"icon-image host-icon"%>
+          <% else %>
+            <%= image_tag 'default_icon.jpg' ,class:"icon-image host-icon"%>            
+          <% end %>
+        </div>
+        <div class="room-show-profile">
+          <p class="room-show-profile-name"><%= @room.name %></p>
+          <p class="room-show-profile-address"><%= @room.address %></p>
+        </div>
+      </div>
+      <p class="room-show-detail-content"><%= @room.introduction %></p>
+    </div>
+    <div class="col-md-4">
+      <div class="room-show-nav">
+        <h5 class="price-icon"><%= @room.price%> / 日</h5>
+        <div class="room-show-date-select">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
