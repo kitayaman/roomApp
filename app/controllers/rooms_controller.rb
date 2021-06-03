@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :set_q
   def index
     @rooms = Room.all
   end
@@ -21,6 +22,7 @@ class RoomsController < ApplicationController
 
   def show 
     @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def posts
@@ -28,11 +30,15 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @user = User.all
-    @rooms = Room.search(params[:search])
+    @rooms = @q.result
   end
 
   private
+
+  def set_q
+    @q = Room.ransack(params[:q])
+  end
+
   def room_params
     params.require(:room).permit(:name, :address, :introduction , :price, :room_image)
   end

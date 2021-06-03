@@ -5,10 +5,10 @@
         <div class="form-fream">
           <div class="form-area">
             <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
-            <%= form_tag(rooms_search_path,:method => 'get') do %>
-              <%= label :area ,"エリア"%>
-              <%= text_field_tag :search, '', class: 'form-control mb-4', placeholder:"東京"%>
-              <%= submit_tag '探す' , :name => nil, class:'btn btn-primary'%>
+            <%= search_form_for @q, url: search_rooms_path do |f| %>
+              <%= f.label :name_cont ,"エリア"%>
+              <%= f.search_field :name_cont, class: 'form-control mb-4', placeholder:"東京"%><br>
+              <%= submit_tag '探す' ,class:'btn btn-primary'%>
             <% end %>
           </div>
         </div>
@@ -21,22 +21,30 @@
       <div class="row">
         <div class="panel-item col-lg-3 col-6">
           <span>東京</span>
-          <a href=""><img class="panel-image" src="/assets/img_tokyo.jpg" alt=""></a>
+          <%= link_to search_rooms_path(q: { address_cont: "東京" }) do %>
+            <img class="panel-image" src="/assets/img_tokyo.jpg" alt="">
+          <% end %>
           <div class="shadow"></div>
         </div>
         <div class="panel-item col-lg-3 col-6">
           <span>大阪</span>
-          <a href=""><img class="panel-image" src="/assets/img_osaka.jpg" alt=""></a>
+          <%= link_to search_rooms_path(q: { address_cont: "大阪" }) do %>
+            <img class="panel-image" src="/assets/img_osaka.jpg" alt="">
+          <% end %>
           <div class="shadow"></div>
         </div>
         <div class="panel-item col-lg-3 col-6">
           <span>京都</span>
-          <a href=""><img class="panel-image" src="/assets/img_kyoto.jpg" alt=""></a>
+          <%= link_to search_rooms_path(q: { address_cont: "京都" }) do %>
+            <img class="panel-image" src="/assets/img_kyoto.jpg" alt="">
+          <% end %>
           <div class="shadow"></div>
         </div>
         <div class="panel-item col-lg-3 col-6">
           <span>札幌</span>
-          <a href=""><img class="panel-image" src="/assets/img_sapporo.jpg" alt=""></a>
+          <%= link_to search_rooms_path(q: { address_cont: "札幌" }) do %>
+            <img class="panel-image" src="/assets/img_sapporo.jpg" alt="">
+          <% end %>
           <div class="shadow"></div>
         </div>
         
