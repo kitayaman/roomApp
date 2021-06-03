@@ -9,7 +9,6 @@ class User < ApplicationRecord
   
   mount_uploader :user_image, UserImageUploader
 
-  
   validates :name, presence: true
   validates :user_image, presence: true, on: :update
   validates :email, uniqueness: true, presence: true

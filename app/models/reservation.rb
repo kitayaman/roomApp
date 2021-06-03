@@ -12,13 +12,9 @@ class Reservation < ApplicationRecord
   end
 
   def total_amount
-    # return if room_price.nil? || person_num.nil? || date_check.nil?
     room_price * person_num * date_check.to_i
   end
-
-  # validates :person_num, presence: true
-  # validates :start_date, presence: true
-  # validates :end_date, presence: true
+  
   validate :today_check?
   validate :start_end_check?
   validate :person_check?
